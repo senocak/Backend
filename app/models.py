@@ -18,7 +18,7 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     registered_on = db.Column(db.DateTime, nullable=False)
     admin = db.Column(db.Boolean, nullable=False, default=False)
-    password_hash = db.Column(db.String(100))
+    sifre_hash = db.Column(db.String(100))
 
     @property
     def sifre(self):
@@ -26,13 +26,13 @@ class User(db.Model):
 
     @sifre.setter
     def sifre(self, sifre):
-        self.password_hash = flask_bcrypt.generate_password_hash(sifre).decode('utf-8')
+        self.sifre_hash = flask_bcrypt.generate_password_hash(sifre).decode('utf-8')
 
     def __repr__(self):
         return "<User '{}'>".format(self.email)
 
     def sifre_kontrol(self, sifre):
-        return flask_bcrypt.check_password_hash(self.password_hash, sifre)
+        return flask_bcrypt.check_password_hash(self.sifre_hash, sifre)
 
     @staticmethod
     def token_sifrele(user_id):

@@ -1,4 +1,3 @@
-import os
 from flask import request
 from app.exception import NotFound, BadRequest, Conflict, UnAuthorized, getStatus
 from app.models import User, Kategori, Yazi, KaraListe
@@ -8,8 +7,6 @@ import datetime
 from app import db
 from functools import wraps
 from slugify import slugify
-
-PER_PAGE = 3
 
 
 class Middleware:
@@ -126,13 +123,13 @@ class KategoriServis:
 
     @classmethod
     def tek_kategori(cls, tip, deger):
+        kategori = None
         if deger is None or not deger.strip():
             raise BadRequest("Id bulunamadı")
         if tip == "id":
             kategori = Kategori.query.filter_by(id=deger).first()
         elif tip == "url":
             kategori = Kategori.query.filter_by(url=deger).first()
-
         if kategori is None:
             raise NotFound("Kategori Bulunamadı")
         return kategori
