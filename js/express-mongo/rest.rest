@@ -1,0 +1,21 @@
+GET http://localhost:3000/api/yazilar
+###
+GET http://localhost:3000/api/yazilar/laravel-adlandirma-kurallari
+###
+GET http://localhost:3000/api/yorumlar?populate=1
+###
+GET http://localhost:3000/api/yorumlar/laravel-adlandirma-kurallari
+###
+GET http://localhost:3000/api/kategoriler
+###
+POST http://localhost:3000/api/login
+Content-Type: Application/json; charset=utf-8
+
+{
+	"email":"lorem@ipsum.com",
+	"sifre":"lorem"
+}
+###
+POST http://localhost:3000/api/profile
+Content-Type: Application/json; charset=utf-8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvcmVtQGlwc3VtLmNvbSIsInNpZnJlIjoiJDJiJDA4JFBLN1c1T0I4S1dzeTR3dUxTMmhDUE9hR2c0NHFZVUM0emZpMjUyZnB6L0J6bE5PL0Q0UzkyIiwiaWF0IjoxNTg4OTUyOTIyLCJleHAiOjE1ODkwMzkzMjJ9.U5I1mXj0sceGM3WLFmyj0hOboRKCoMgd6-CbJ_dA6cA

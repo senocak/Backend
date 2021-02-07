@@ -1,0 +1,38 @@
+{% extends "app.twig" %}
+{% block stylesheet %}
+	<script type="text/javascript">
+		function showimagepreview(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {$('#imgview').attr('src', e.target.result);}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+	</script>
+{% endblock %}
+{% block content %}    
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-xs-6">
+            <img src="{{ base_url() }}/images/{{kategori.kategori_resim}}" width="150px">
+            <img src="{{ base_url() }}/images/no-image.png" id="imgview" width="150px">
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group {{ errors.kategori_baslik ? 'has-error' : '' }}">
+                <input type="text" name="kategori_baslik" class="form-control" placeholder="Kategori İsmi" required value="{{ kategori.kategori_baslik }}">
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                {% if errors.kategori_baslik %}
+                    <span class="help-block">{{ errors.kategori_baslik | first }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group {{ errors.kategori_resim ? 'has-error' : '' }}">
+                <input type="file" name="kategori_resim" class="form-control" onChange="showimagepreview(this)"/>
+                {% if errors.kategori_resim %}
+                    <span class="help-block">{{ errors.kategori_resim | first }}</span>
+                {% endif %}
+            </div>
+            <small class="form-text text-muted">Seçili Resimi Önizleyebilirsiniz.</small>
+        </div>
+        {{csrf.field | raw }}
+        <input type="submit" class="btn btn-bitbucket btn-block" value="Güncelle"/>
+    </form>
+{% endblock %}

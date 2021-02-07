@@ -1,0 +1,43 @@
+{% extends "app.twig" %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="{{base_url()}}/css/bootstrap-tagsinput.css">
+	<script src="https://cdn.ckeditor.com/4.12.1/full-all/ckeditor.js"></script>
+    <style>
+        .bootstrap-tagsinput{width: 100%;}
+        .checkbox {padding-left: 20px; }
+        .checkbox label {display: inline-block;vertical-align: middle;position: relative;padding-left: 5px; }
+        .checkbox label::before {content: "";display: inline-block;position: absolute;width: 17px;height: 17px;left: 0;margin-left: -20px;border: 1px solid #cccccc;border-radius: 3px;background-color: #fff;-webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;-o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;transition: border 0.15s ease-in-out, color 0.15s ease-in-out; }
+        .checkbox-warning input[type="checkbox"]:checked + label::before{background-color: #f0ad4e;border-color: #f0ad4e; }
+        .checkbox-warning input[type="checkbox"]:checked + label::after{color: #fff; }
+        .checkbox-warning input[type="checkbox"]:indeterminate + label::before{background-color: #f0ad4e;border-color: #f0ad4e;}
+        .checkbox-warning input[type="checkbox"]:indeterminate + label::after{background-color: #fff;}
+    </style>
+{% endblock %}
+{% block content %}
+    <form method="post" action="{{ path_for('admin.yazi.ekle.post') }}">
+        <input type="text" name="yazi_baslik" class="form-control" placeholder="Yazı Başlığı">
+        <textarea class="ckeditor" name="yazi_icerik" placeholder="Yazı Açıklaması" id="editor1" ></textarea>
+        <select class="form-control" name="kategori_id">
+            {% for kategori in kategoriler %}
+                <option value="{{ kategori.kategori_id }}">{{ kategori.kategori_baslik }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="yazi_etiketler" class="form-control" placeholder="Yazı Etiketleri" data-role="tagsinput">
+        <div class="checkbox checkbox-warning">
+            <input id="check2" type="checkbox" name="yazi_onecikan">
+            <label for="check2">Yazıyı Öne Çıkar</label>
+        </div>
+        {{csrf.field | raw }}
+        <input type="submit" value="Kaydet" class="btn btn-block btn-success">
+    </form>
+{% endblock %}
+{% block script %}
+	<script src="{{base_url()}}/js/bootstrap-tagsinput.min.js"></script>
+	<script>
+        CKEDITOR.replace('editor1', {
+            filebrowserBrowseUrl: "{{base_url()}}/editor/fileman/index.html",
+            filebrowserImageBrowseUrl: "{{base_url()}}/editor/fileman/index.html",
+            extraPlugins: 'codesnippet'
+        });
+    </script>
+{% endblock %}

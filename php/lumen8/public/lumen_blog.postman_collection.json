@@ -1,0 +1,809 @@
+{
+	"info": {
+		"_postman_id": "8ffa6eea-6466-4455-b2ec-ad456313e1a6",
+		"name": "lumen_blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Kategoriler",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d6682ca4-7832-487a-8f98-9284ffb164ed",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"if(responseData.length>0){\r",
+							"    pm.globals.set(\"kategori_url\", responseData[0].url);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/kategoriler",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"kategoriler"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kategori",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6cbad6cf-233d-4b90-a13b-81c9dee77f45",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/kategori/{{kategori_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"kategori",
+						"{{kategori_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kategori - Yazılar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f0c04c0e-d94b-47e5-a867-c9701cf246c4",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/kategori/{{kategori_url}}/yazilar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"kategori",
+						"{{kategori_url}}",
+						"yazilar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yazılar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f5fa3a4-b8c4-4829-86d4-5c282d0093e4",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"if(responseData.data.length>0){\r",
+							"    pm.globals.set(\"yazi_url\", responseData.data[0].url);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/yazilar",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"yazilar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yazı",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e5e019a-8821-4687-aaee-0a5c49f5aa75",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/yazi/{{yazi_url}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"yazi",
+						"{{yazi_url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d687f14d-17cf-47be-9ae2-f58756bb10b4",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"var access_token = responseData.access_token;\r",
+							"var refresh_token = responseData.refresh_token;\r",
+							"var expires_in = responseData.expires_in;\r",
+							"\r",
+							"if(access_token !== null && access_token !== undefined){\r",
+							"    pm.globals.set(\"access_token\", access_token);\r",
+							"}\r",
+							"if(refresh_token !== null && refresh_token !== undefined){\r",
+							"    pm.globals.set(\"refresh_token\", refresh_token);\r",
+							"}\r",
+							"if(expires_in !== null && expires_in !== undefined){\r",
+							"    pm.globals.set(\"expires_in\", expires_in);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"isim\": \"anil3\",\r\n    \"email\":\"anil3@bilgimedya.com.tr\",\r\n    \"sifre\":\"anil3@bilgimedya.com.tr\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c86119cd-89a6-4a61-bf50-c56e57c93243",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"var access_token = responseData.access_token;\r",
+							"var refresh_token = responseData.refresh_token;\r",
+							"var expires_in = responseData.expires_in;\r",
+							"\r",
+							"if(access_token !== null && access_token !== undefined){\r",
+							"    pm.globals.set(\"access_token\", access_token);\r",
+							"}\r",
+							"if(refresh_token !== null && refresh_token !== undefined){\r",
+							"    pm.globals.set(\"refresh_token\", refresh_token);\r",
+							"}\r",
+							"if(expires_in !== null && expires_in !== undefined){\r",
+							"    pm.globals.set(\"expires_in\", expires_in);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"anil@bilgimedya.com.tr\",\r\n    \"sifre\":\"anil@bilgimedya.com.tr\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - oauth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ae0dfebc-e1ee-4853-b6a3-f2b24bee592f",
+						"exec": [
+							"var responseData = pm.response.json();\r",
+							"var access_token = responseData.access_token;\r",
+							"var refresh_token = responseData.refresh_token;\r",
+							"var expires_in = responseData.expires_in;\r",
+							"\r",
+							"if(access_token !== null && access_token !== undefined){\r",
+							"    pm.globals.set(\"access_token\", access_token);\r",
+							"}\r",
+							"if(refresh_token !== null && refresh_token !== undefined){\r",
+							"    pm.globals.set(\"refresh_token\", refresh_token);\r",
+							"}\r",
+							"if(expires_in !== null && expires_in !== undefined){\r",
+							"    pm.globals.set(\"expires_in\", expires_in);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"grant_type\": \"password\",\r\n    \"client_id\": \"2\",\r\n    \"client_secret\": \"q3sthF7izr0GLcKdWq6px3RN2zmgJx9Q0PgSYbTc\",\r\n    \"username\":\"anil@bilgimedya.com.tr\",\r\n    \"password\":\"anil@bilgimedya.com.tr2\",\r\n    \"scope\": \"*\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/auth/token",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Çıkış",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/user/cikis",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"cikis"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User - Güncelle",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"anil@bilgimedya.com.tr\",\r\n    \"sifre\":\"anil@bilgimedya.com.tr\",\r\n    \"sifre_onay\": \"anil@bilgimedya.com.tr\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/user",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kategori Ekle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d7ff30b4-7b93-46b0-84a3-6e8072c9b9bb",
+						"exec": [
+							"if(pm.response.code == 200){\r",
+							"    pm.globals.set(\"kategori_url_eklenen\", pm.response.json().url);\r",
+							"    pm.globals.set(\"kategori_id_eklenen\", pm.response.json().id);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "baslik",
+							"value": "Başlık POST",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/senoc/Desktop/2020-01-10_12-24-13.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/api/admin/kategori/ekle",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"kategori",
+						"ekle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kategori Güncelle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "82ed000a-a86f-4b45-ad21-cffc8e68c59c",
+						"exec": [
+							"if(pm.response.code == 200){\r",
+							"    pm.globals.set(\"kategori_url_eklenen\", pm.response.json().url);\r",
+							"    pm.globals.set(\"kategori_id_eklenen\", pm.response.json().id);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "baslik",
+							"value": "Başlık PATCH",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/senoc/Desktop/2019-12-22_20-42-24.jpg"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/admin/kategori/{{kategori_url_eklenen}}/guncelle?_method=PATCH",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"kategori",
+						"{{kategori_url_eklenen}}",
+						"guncelle"
+					],
+					"query": [
+						{
+							"key": "_method",
+							"value": "PATCH"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Kategori Sil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db6dbb3f-40cf-4d14-977c-bd184ae3e81e",
+						"exec": [
+							"pm.globals.set(\"kategori_url_eklenen\", null);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/admin/kategori/{{kategori_url_eklenen}}/sil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"kategori",
+						"{{kategori_url_eklenen}}",
+						"sil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yazı Ekle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dc8f3cc-c6c7-4fc3-b052-3d912d96e23a",
+						"exec": [
+							"if(pm.response.code == 200){\r",
+							"    pm.globals.set(\"yazi_url_eklenen\", pm.response.json().url);\r",
+							"    pm.globals.set(\"yazi_id_eklenen\", pm.response.json().id);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"baslik\": \"Başlık POST23\",\r\n    \"icerik\": \"İÇERİK POST\",\r\n    \"kategori_id\": \"{{kategori_id_eklenen}}\",\r\n    \"etiketler\": \"optional,etiketler\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/admin/yazi/ekle",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"yazi",
+						"ekle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yazı Güncelle",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ea6475c1-01de-49dc-9296-a48794d35f82",
+						"exec": [
+							"if(pm.response.code == 200){\r",
+							"    pm.globals.set(\"yazi_url_eklenen\", pm.response.json().url);\r",
+							"    pm.globals.set(\"yazi_id_eklenen\", pm.response.json().id);\r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"baslik\": \"Başlık POST\",\r\n    \"icerik\": \"İÇERİK POST\",\r\n    \"kategori_id\": \"{{kategori_id_eklenen}}\",\r\n    \"etiketler\": \"optional,etiketler\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/admin/yazi/{{yazi_url_eklenen}}/guncelle",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"yazi",
+						"{{yazi_url_eklenen}}",
+						"guncelle"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Yazı Sil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d8549092-82de-4215-8ced-57ed222b4d7e",
+						"exec": [
+							"pm.globals.set(\"kategori_url_eklenen\", null);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{access_token}}"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/api/admin/yazi/{{yazi_url_eklenen}}/sil",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"admin",
+						"yazi",
+						"{{yazi_url_eklenen}}",
+						"sil"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bearer Auth Token For user3 Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dfd7ecab-73c6-4360-8d3c-93c8521faa4a",
+						"exec": [
+							"// We want to save the authToken to the global variables",
+							"var responseData = pm.response.json();",
+							"var accessToken = responseData.access_token;",
+							"",
+							"if(accessToken !== null && accessToken !== undefined){",
+							"    pm.globals.set(\"groupChatParticipant1Token\", accessToken);",
+							"}",
+							"",
+							"// We also need to extract the testUser from the token",
+							"var authTokenParts = accessToken.split(\".\");",
+							"var partWithUser = authTokenParts[1];",
+							"var secondPartDecoded = CryptoJS.enc.Base64.parse(partWithUser);",
+							"var secondPartText = CryptoJS.enc.Utf8.stringify(secondPartDecoded);",
+							"var secondPartJson = JSON.parse(secondPartText);",
+							"var groupChatParticipant1UUID = secondPartJson.preferred_username;",
+							"",
+							"if(groupChatParticipant1UUID !== null){",
+							"    pm.globals.set(\"groupChatParticipant1UUID\", groupChatParticipant1UUID);",
+							"}",
+							"",
+							"var groupChatParticipant1 = secondPartJson[\"services-identity\"];",
+							"",
+							"if(groupChatParticipant1 !== null){",
+							"    pm.globals.set(\"groupChatParticipant1\", groupChatParticipant1);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "user2.sweet_proj_1@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Kandy-1234",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "PUB-bale",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://172.28.226.103:8080/auth/realms/att/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"172",
+						"28",
+						"226",
+						"103"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"realms",
+						"att",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

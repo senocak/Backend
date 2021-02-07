@@ -1,0 +1,54 @@
+{% extends "app.twig" %}
+{% block stylesheet %}
+	<script type="text/javascript">
+		function showimagepreview(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function (e) {$('#imgview').attr('src', e.target.result);}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+	</script>
+{% endblock %}
+{% block content %}    
+    <form method="post" enctype="multipart/form-data">
+        <div class="col-xs-6">
+            <img src="{{ base_url() }}/images/no-image.png" id="imgview" width="150px">
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group {{ errors.kategori_baslik ? 'has-error' : '' }}">
+                <input type="text" name="kategori_baslik" class="form-control" placeholder="Kategori İsmi" required>
+                <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                {% if errors.kategori_baslik %}
+                    <span class="help-block">{{ errors.kategori_baslik | first }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group {{ errors.kategori_resim ? 'has-error' : '' }}">
+                <input type="file" name="kategori_resim" class="form-control" onChange="showimagepreview(this)" required/>
+                {% if errors.kategori_resim %}
+                    <span class="help-block">{{ errors.kategori_resim | first }}</span>
+                {% endif %}
+            </div>
+            <small class="form-text text-muted">Seçili Resimi Önizleyebilirsiniz.</small>
+        </div>
+        {{csrf.field | raw }}
+        <input type="submit" class="btn btn-bitbucket btn-block" value="Ekle"/>
+    </form>
+    <table class="table table-dark table-striped">
+        <thead><tr><th>Resim</th><th>Başlık</th><th>İşlemler</th></tr></thead>
+        <tbody>
+            {% for kategori in kategoriler %}
+                <tr>
+                    <td><img src="{{ base_url() }}/images/{{kategori.kategori_resim}}" width="100px"></td>
+                    <td>{{kategori.kategori_baslik}}</td>
+                    <td>
+                        <a class="label label-primary" href="{{base_url()}}/admin/kategoriler/{{kategori.kategori_url}}/duzenle">Güncelle</a>
+                        <a class="label label-danger" href="{{base_url()}}/admin/kategoriler/{{kategori.kategori_url}}/sil">Sil</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td>Kategori Yok</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

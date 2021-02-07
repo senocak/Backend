@@ -1,0 +1,47 @@
+[
+    {
+        "id": "1ac425b3-800c-4fed-82f4-3e6d3c9da760",
+        "baslik": "Php",
+        "url": "php",
+        "resim": "PHP.png",
+        "sira": "0",
+        "created_at": "26/7/2019 19:39:22",
+        "updated_at": "9/6/2020 12:58:31"
+    },
+    {
+        "id": "2ac425b3-800c-4fed-82f4-3e6d3c9da760",
+        "baslik": "Laravel",
+        "url": "laravel",
+        "resim": "LARAVEL.png",
+        "sira": "0",
+        "created_at": "26/7/2019 19:39:22",
+        "updated_at": "9/6/2020 12:58:46"
+    },
+    {
+        "id": "3ac425b3-800c-4fed-82f4-3e6d3c9da760",
+        "baslik": "Javascript",
+        "url": "javascript",
+        "resim": "javascript.png",
+        "sira": "0",
+        "created_at": "9/6/2020 11:06:04",
+        "updated_at": "9/6/2020 12:57:43"
+    },
+    {
+        "id": "4ac425b3-800c-4fed-82f4-3e6d3c9da760",
+        "baslik": "Python",
+        "url": "python",
+        "resim": "python.png",
+        "sira": "0",
+        "created_at": "9/6/2020 12:26:27",
+        "updated_at": "9/6/2020 12:57:43"
+    },
+    {
+        "id": "5ac425b3-800c-4fed-82f4-3e6d3c9da760",
+        "baslik": "Spring Boot",
+        "url": "spring-boot",
+        "resim": "spring-boot.png",
+        "sira": "0",
+        "created_at": "9/6/2020 12:57:24",
+        "updated_at": "9/6/2020 12:57:43"
+    }
+]

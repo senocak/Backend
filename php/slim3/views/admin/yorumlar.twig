@@ -1,0 +1,46 @@
+{% extends "app.twig" %}
+{% block content %}    
+    <table class="table table-dark table-striped">
+        <thead><tr><th>Email</th><th>Yazı</th><th>İşlemler</th></tr></thead>
+        <tbody>
+            {% for yorum in yorumlar %}
+                <tr>
+                    <td>{{yorum.yorum_email}}</td>
+                    <td>
+                    {% for yazi in yazilar %}
+                        {% if yazi.yazi_id == yorum.yazi_id %}
+                            <a href="{{ path_for('detay',{"url":yazi.yazi_url}) }}" target="_blank" class="label label-warning">{{yazi.yazi_baslik}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    </td>
+                    <td>
+                        <a class="label label-primary" data-toggle="modal" data-target="#myModal_{{yorum.yorum_id}}">Gör</a>
+                        <a class="label label-danger" href="{{base_url()}}/admin/yorumlar/{{yorum.yorum_id}}/sil">Sil</a>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal_{{yorum.yorum_id}}" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">{{yorum.yorum_email}}</h4>
+                                    </div>
+                                    <div class="modal-body"><p>{{yorum.yorum_yorum}}</p></div>
+                                    <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        {% if yorum.yorum_aktif == 1 %}
+                            <a class="label label-default" href="{{base_url()}}/admin/yorumlar/{{yorum.yorum_id}}/pasif">Pasif Yap</a>
+                        {% else %}
+                            <a class="label label-warning" href="{{base_url()}}/admin/yorumlar/{{yorum.yorum_id}}/pasif">Aktif Yap</a>
+                        {% endif %}
+                        
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td>Kategori Yok</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

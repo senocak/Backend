@@ -1,0 +1,52 @@
+{% extends "app.twig" %}
+{% block content %}
+    <img src="{{base_url()}}/images/{{kategori.kategori_resim}}" class="img-responsive">
+    <section class="post">
+        <header class="entry-header">
+            <a class="entry-avatar" style="color:black;">{{yazilar.created_at | date('d/m/Y')}}</a>
+            <h2 class="entry-title"><a href="{{base_url()}}/yazi/{{yazilar.yazi_url}}">{{yazilar.yazi_baslik}}</a></h2>
+            <p class="entry-meta">
+                <a class="label label-danger" href="{{base_url()}}/kategori/{{kategori.kategori_url}}">{{kategori.kategori_baslik}}</a>
+                | <a class="entry-date">Anıl Şenocak</a> |
+                {% for item in yazilar.yazi_etiketler|split(',') %}
+                    <a class="label label-info">{{item}}</a>
+                {% endfor %}
+            </p>
+        </header>
+        <div class="entry-description">
+            <p>{{yazilar.yazi_icerik | raw}}</p>
+        </div>
+    </section>
+    <section class="post">
+        <form method="post" autocomplete="off">
+            <div class="form-group {{ errors.yorum_email ? 'has-error' : '' }}">
+                <input type="email" name="yorum_email" placeholder="Email" class="form-control">
+                {% if errors.yorum_email %}
+                    <span class="help-block">{{ errors.yorum_email | first }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group {{ errors.yorum_yorum ? 'has-error' : '' }}">
+                <textarea name="yorum_yorum" class="form-control" placeholder="Yorumunuz" style="resize:none;" rows="3"></textarea>
+                {% if errors.yorum_yorum %}
+                    <span class="help-block">{{ errors.yorum_yorum | first }}</span>
+                {% endif %}
+            </div>
+            <input type="submit" value="Gönder" class="btn btn-danger btn-block">
+            {{csrf.field | raw }}
+        </form>
+    </section>
+    {% for yorum in yorumlar %}
+       <section class="post">
+            <header class="entry-header">
+                <a class="entry-avatar" style="color:black;">{{yorum.yorum_created_at | date('d/m/Y H:ia')}}</a>
+                <a class="entry-title">{{yorum.yorum_email}}</a>
+                <p>{{yorum.yorum_yorum}}</p>
+            </header>
+        </section>
+    {% endfor %}
+{% endblock %}
+{% block kategoriler %}
+    {% for kategori in kategoriler %}
+       <a href="{{base_url()}}/kategori/{{kategori.kategori_url}}" class="label label-danger">{{kategori.kategori_baslik}}</a> 
+    {% endfor %}
+{% endblock %}

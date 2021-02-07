@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Anıl Şenocak - Resume</title>
+        <link rel="shortcut icon" href="/assets/images/favicon.png"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+        <style>
+            html {line-height: 1.15;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%}
+            body {margin: 0}
+            article, aside, footer, header, nav, section {display: block}
+            h1 {font-size: 2em;margin: .67em 0}
+            figcaption, figure, main {display: block}
+            figure {margin: 1em 40px}
+            hr {box-sizing: content-box;height: 0;overflow: visible}
+            pre {font-family: monospace, monospace;font-size: 1em}
+            a {background-color: transparent;-webkit-text-decoration-skip: objects}
+            abbr[title] {border-bottom: none;text-decoration: underline;-webkit-text-decoration: underline dotted;text-decoration: underline dotted}
+            b, strong {font-weight: inherit;font-weight: bolder}
+            code, kbd, samp {font-family: monospace, monospace;font-size: 1em}
+            dfn {font-style: italic}
+            mark {background-color: #ff0;color: #000}
+            small {font-size: 80%}
+            sub, sup {font-size: 75%;line-height: 0;position: relative;vertical-align: baseline}
+            sub {bottom: -.25em}
+            sup {top: -.5em}
+            audio, video {display: inline-block}
+            audio:not([controls]) {display: none;height: 0}
+            img {border-style: none}
+            svg:not(:root) {overflow: hidden}
+            button, input, optgroup, select, textarea {font-family: sans-serif;font-size: 100%;line-height: 1.15;margin: 0}
+            button, input {overflow: visible}
+            button, select {text-transform: none}
+            [type=reset], [type=submit], button, html [type=button] {-webkit-appearance: button}
+            [type=button]::-moz-focus-inner, [type=reset]::-moz-focus-inner, [type=submit]::-moz-focus-inner, button::-moz-focus-inner {border-style: none;padding: 0}
+            [type=button]:-moz-focusring, [type=reset]:-moz-focusring, [type=submit]:-moz-focusring, button:-moz-focusring {outline: 1px dotted ButtonText}
+            fieldset {padding: .35em .75em .625em}
+            legend {box-sizing: border-box;color: inherit;display: table;max-width: 100%;padding: 0;white-space: normal}
+            progress {display: inline-block;vertical-align: baseline}
+            textarea {overflow: auto}
+            [type=checkbox], [type=radio] {box-sizing: border-box;padding: 0}
+            [type=number]::-webkit-inner-spin-button, [type=number]::-webkit-outer-spin-button {height: auto}
+            [type=search] {-webkit-appearance: textfield;outline-offset: -2px}
+            [type=search]::-webkit-search-cancel-button, [type=search]::-webkit-search-decoration {-webkit-appearance: none}
+            ::-webkit-file-upload-button {-webkit-appearance: button;font: inherit}
+            details, menu {display: block}
+            summary {display: list-item}
+            canvas {display: inline-block}
+            [hidden], template {display: none}
+            @page {  size: A4 portrait;  margin: 0  }
+            * {box-sizing: border-box}
+
+            :root {
+                --page-width: 8.5in;
+                --page-height: 11.74in;
+                --main-width: 6.4in;
+                --sidebar-width: calc(var(--page-width) - var(--main-width));
+                --decorator-horizontal-margin: 0.2in;
+                --sidebar-horizontal-padding: 0.2in;
+                --decorator-outer-offset-top: 10px;
+                --decorator-outer-offset-left: -5.5px;
+                --decorator-border-width: 1px;
+                --decorator-outer-dim: 9px;
+                --decorator-border: 1px solid #ccc;
+                --row-blocks-padding-top: 5pt;
+                --date-block-width: 1.2in;
+                --main-blocks-title-icon-offset-left: -19pt
+            }
+            body {width: var(--page-width); /*height: var(--page-height);*/margin: 0 auto;font-family: Open Sans, sans-serif;font-weight: 300;line-height: 1.3;color: #444;-webkit-hyphens: auto;-ms-hyphens: auto;hyphens: auto}
+            h1, h2, h3 {margin: 0;color: #000}
+            a {text-decoration: none;color: #444}
+            li {list-style-type: none}
+            #main {float: left;width: var(--main-width);padding: .25in .25in 0;font-size: 7pt}
+            #sidebar {float: left;width: var(--sidebar-width);height: 100%;padding: .6in var(--sidebar-horizontal-padding);background-color: #f2f2f2;font-size: 8.5pt}
+            #sidebar, #title {position: relative}
+            #title {left: .55in;margin-bottom: .3in;line-height: 1.2;display: flex;width: calc(100% - .55in)}
+            #title .text {margin-right: auto}
+            #title .qr-code img {max-width: 58px;max-height: 58px}
+            #title h1 {font-weight: 700;font-size: 18pt;line-height: 1.5}
+            #title h1 strong {margin: auto 2pt auto 4pt;font-weight: 600}
+            .subtitle {font-size: 8pt}
+            .main-block {margin-top: .1in}
+            #main h2 {position: relative;top: var(--row-blocks-padding-top);left: calc(var(--date-block-width) + var(--decorator-horizontal-margin));font-weight: 400;font-size: 11pt;color: #555}
+            #main h2>i {position: absolute;left: var(--main-blocks-title-icon-offset-left);z-index: 1;color: #444}
+            #main h2:after {height: calc(var(--row-blocks-padding-top)*2);position: relative;top: calc(-1*var(--row-blocks-padding-top));left: calc(-1*var(--decorator-horizontal-margin));display: block;border-left: var(--decorator-border);z-index: 0;line-height: 0;font-size: 0;content: " "}
+            #main h2>.fa-graduation-cap {left: calc(var(--main-blocks-title-icon-offset-left) - 2pt);top: 2pt}
+            #main h2>.fa-suitcase {top: 1pt}
+            #main h2>.fa-folder-open {top: 1.5pt}
+            .blocks {display: flex;flex-flow: row nowrap}
+            .blocks>div {padding-top: var(--row-blocks-padding-top)}
+            .date {flex: 0 0 var(--date-block-width);padding-top: calc(var(--row-blocks-padding-top) + 2.5pt)!important;padding-right: var(--decorator-horizontal-margin);font-size: 7pt;text-align: right;line-height: 1}
+            .date span {display: block}
+            .date span:nth-child(2):before {position: relative;top: 1pt;right: 5.5pt;display: block;height: 10pt;content: "|"}
+            .decorator {flex: 0 0 0;position: relative;width: 2pt;min-height: 100%;border-left: var(--decorator-border)}
+            .decorator:before {top: var(--decorator-outer-offset-top);left: var(--decorator-outer-offset-left);width: var(--decorator-outer-dim);height: var(--decorator-outer-dim);border-radius: calc(var(--decorator-outer-dim)/2);background-color: #fff}
+            .decorator:after, .decorator:before {position: absolute;content: " ";display: block}
+            .decorator:after {top: calc(var(--decorator-outer-offset-top) + var(--decorator-border-width));left: calc(var(--decorator-outer-offset-left) + var(--decorator-border-width));width: calc(var(--decorator-outer-dim) - var(--decorator-border-width)*2);height: calc(var(--decorator-outer-dim) - var(--decorator-border-width)*2);border-radius: calc((var(--decorator-outer-dim) - var(--decorator-border-width)*2)/2);background-color: #555}
+            .blocks:last-child .decorator {margin-bottom: .25in}
+            .details {flex: 1 0 0;padding-left: var(--decorator-horizontal-margin);padding-top: calc(var(--row-blocks-padding-top) - .5pt)!important}
+            .details header {color: #000}
+            .details h3 {font-size: 9pt}
+            .main-block:not(.concise) .details div {margin: .18in 0 .1in}
+            .main-block:not(.concise) .blocks:last-child .details div {margin-bottom: 0}
+            .main-block.concise .details div:not(.concise) {padding: .05in 0 .07in}
+            .details .place {float: left;font-size: 7.5pt}
+            .details .location {float: right}
+            .details div {clear: both}
+            #main ul, #personal-info ul {padding-left: .07in;margin: .08in 0}
+            #main li, #personal-info li {margin: 0 0 .025in}
+            #main li:before, #personal-info li:before {position: relative;margin-left: -4.25pt;content: "\2022   "}
+            .details .concise ul {margin: 0!important;-moz-columns: 2;column-count: 2}
+            .details .concise li {margin: 0!important;margin-left: 0!important}
+            .avatar {border-radius: 50%;border: 3px solid #000;max-width: 100%;display: block;vertical-align: middle;height: auto;}
+            #sidebar h1 {font-weight: 400;font-size: 11pt}
+            .side-block {margin-top: .2in}
+            #cert-info ul, #contact ul, #links ul {margin-top: .05in;padding-left: 0;font-family: Source Sans Pro;font-weight: 400;line-height: 1.75}
+            #cert-info li>i, #contact li>i, #links li>i {width: 9pt;text-align: right}
+            #skills {line-height: 1.5}
+            #skills ul {margin: .05in 0 .15in;padding: 0}
+            #disclaimer {position: absolute;bottom: var(--sidebar-horizontal-padding);right: var(--sidebar-horizontal-padding);font-size: 7.5pt;font-style: italic;line-height: 1.1;text-align: right;color: #777}
+            #disclaimer p {display: none}
+            #disclaimer a.btn {color: #333;display: inline-block;padding: 5px 10px;margin-bottom: 0;font-size: 10pt;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid;border-radius: 4px}
+            #disclaimer a.btn:hover {color: #333;background-color: #e6e6e6;border-color: #adadad}
+            #personal-info li {font-size: 7.5pt}
+            #cert-info li {font-size: 7.4pt;display: block}
+            .print {display: none}
+            @media print {
+                .page-break {page-break-after: always}
+                body {-webkit-print-color-adjust: exact}
+                #disclaimer p {display: block}
+                #disclaimer a.btn {display: none}
+                .print {display: inherit}
+                .page-break-margin {margin-top: 2in}
+            }
+            li.project-title {font-size: 8pt;font-weight: 700}
+            li.project-title>ul li {font-size: 7pt;font-weight: 400}
+            b{font-weight: revert !important;}
+        </style>
+    </head>
+    <body lang="en" style="width: auto;">
+        <section id="main">
+            <header id="title">
+                <div class="text">
+                    <h1>
+                        <a href="http://asenocak.com/">Anıl Şenocak</a>
+                    </h1>
+                    <span class="subtitle">Software Engineer</span>
+                </div>
+                <div class="qr-code">
+                    <!--
+                    <img src="/assets/images/qr-code.png" alt="qr-code">
+                    -->
+                </div>
+            </header>
+            <section class="main-block">
+                <h2><i class="fas fa-briefcase"></i> Work Experiences</h2>
+                <section class="blocks">
+                    <div class="date"><span>Present</span><span>August, 2018</span></div>
+                    <div class="decorator"></div>
+                    <div class="details">
+                        <header>
+                            <h3>Backend Software Engineer</h3>
+                            <span class="place"><a href="http://netas.com.tr">NETAŞ</a></span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey</span>
+                        </header>
+                        <div>
+                            <ul>
+                                <li>Transformed the legacy system to the current system by using current microservices</li>
+                                <li>Data migration and bulk operation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="blocks">
+                    <div class="date">
+                        <span>July, 2016</span><span>December, 2016</span>
+                    </div>
+                    <div class="decorator"></div>
+                    <div class="details">
+                        <header>
+                            <h3>Intern Software Engineer</h3>
+                            <span class="place"><a href="http://netas.com.tr">NETAŞ</a></span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Istanbul, Turkey</span>
+                        </header>
+                        <div>
+                            <ul>
+                                <li>Intern Quality Assurance Engineer</li>
+                                <li><b>Client Automation</b>: Selenium(Java), Cucumber, Junit</li>
+                                <li><b>Tools</b>: POSTMAN, SOAP UI, JIRA, HP Quality Center, Jenkins, Git, Bitbucket</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="main-block">
+                <h2><i class="far fa-folder-open"></i> Skills</h2>
+                <section class="blocks">
+                    <div class="date"></div>
+                    <div class="decorator"></div>
+                    <div class="details">
+                        <header><h3>Technical Skill</h3></header>
+                        <div>
+                            <ul>
+                                <li>PHP/Laravel, Javascript/ExpressJs/VueJS, Python, Java/SpringBoot</li>
+                                <li>Apache, Nginx, Microservices, REST, Docker</li>
+                                <li>PostgreSQL, MySQL, SQLite, MongoDB, Redis</li>
+                                <li>RabbitMQ</li>
+                                <li>Git</li>
+                                <li>Agile, Scrum</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section class="main-block concise">
+                <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                <section class="blocks">
+                    <div class="date">
+                        <span>March, 2018</span><span>June, 2018</span>
+                    </div>
+                    <div class="decorator"></div>
+                    <div class="details">
+                        <header>
+                            <h3>University of Groningen</h3>
+                            <span class="place"><b>Faculty of Science and Engineering</b> - Software Engineering</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Groningen, NETHERLANDS</span>
+                            <div>
+                                <ul>
+                                    <li><b>COSFIRE</b> (<b>C</b>ombination <b>O</b>f <b>S</b>hifted <b>FI</b>lter <b>RE</b>sponses) is a new powerful technology about; Image and
+                                        Vision Computing, Keypoint Detection and Pattern Recognition, Medical Image Analysis</li>
+                                </ul>
+                            </div>
+                        </header>
+                    </div>
+                </section>
+                <section class="blocks">
+                    <div class="date"><span>February, 2016</span><span>July, 2016</span></div>
+                    <div class="decorator"></div>
+                    <div class="details">
+                        <header>
+                            <h3>University of Maribor</h3>
+                            <span class="place"><b>Faculty of Electrical Engineering and Computer Science</b> - Software Engineering</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Maribor, SLOVENIA</span>
+                        </header>
+                    </div>
+                </section>
+
+                <section class="blocks">
+                    <div class="date"><span>June, 2012</span><span>June, 2018</span></div>
+                    <div class="decorator"></div>
+                    <div class="details">
+                        <header>
+                            <h3>Firat University</h3>
+                            <span class="place"><b>Faculty of Technology</b> - Software Engineering</span>
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Elazig, TURKEY</span>
+                            <div>
+                                <ul>
+                                    <li>3,29/4</li>
+                                </ul>
+                            </div>
+                        </header>
+                    </div>
+                </section>
+            </section>
+        </section>
+        <aside id="sidebar">
+            <div class="side-block">
+                <img src="https://media-exp1.licdn.com/dms/image/C4D03AQH6eKJb-lm5pQ/profile-displayphoto-shrink_200_200/0/1581751609017?e=1613001600&v=beta&t=KE88F_ar_g50BVpQ_ZfPzrSvUHYMXdtjwLljAJHy7Mk" alt="avatar" class="avatar">
+            </div>
+
+            <div class="side-block" id="personal-info">
+                <h1><i class="far fa-user"></i> Personal Info</h1>
+                <ul>
+                    <li>Nationality: Turk</li>
+                    <li>Marital Status: Single</li>
+                    <li>DoB: January 1st, 1994</li>
+                </ul>
+            </div>
+            <div class="side-block" id="personal-info">
+                <h1><i class="fas fa-language"></i> Language</h1>
+                <ul>
+                    <li>Turkish - Native</li>
+                    <li>English - Full Professional Proficiency</li>
+                </ul>
+            </div>
+            <div class="side-block" id="contact">
+                <h1><i class="far fa-address-card"></i> Contact Info</h1>
+                <ul>
+                    <li><i class="fas fa-globe-americas"></i> <a href="http://asenocak.com" target="_blank">asenocak.com</a></li>
+                    <li><i class="fab fa-github"></i> <a href="https://github.com/senocak" target="_blank">github.com/senocak</a></li>
+                    <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/anilsenocak27" target="_blank">linkedin.com/in/anilsenocak27</a></li>
+                    <li><i class="far fa-envelope"></i> <a href="mailto:senocakanil@gmail.com">senocakanil@gmail.com</a></li>
+                </ul>
+            </div>
+        </aside>
+    </body>
+</html>

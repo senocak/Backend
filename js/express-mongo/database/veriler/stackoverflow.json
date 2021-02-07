@@ -1,0 +1,32 @@
+{
+    "items":[
+       {
+          "badge_counts":{
+             "bronze":6,
+             "silver":0,
+             "gold":0
+          },
+          "account_id":11044876,
+          "is_employee":false,
+          "last_modified_date":1579544707,
+          "last_access_date":1582007115,
+          "reputation_change_year":28,
+          "reputation_change_quarter":28,
+          "reputation_change_month":28,
+          "reputation_change_week":0,
+          "reputation_change_day":0,
+          "reputation":67,
+          "creation_date":1565706067,
+          "user_type":"registered",
+          "user_id":11922928,
+          "location":"İstanbul, Türkiye",
+          "website_url":"http://senocak.tk",
+          "link":"https://stackoverflow.com/users/11922928/an%c4%b1l-%c5%9eenocak",
+          "profile_image":"https://lh3.googleusercontent.com/--57iYPABIbE/AAAAAAAAAAI/AAAAAAAAABY/P4ZSSD7O7zs/photo.jpg?sz=128",
+          "display_name":"Anıl Şenocak"
+       }
+    ],
+    "has_more":false,
+    "quota_max":300,
+    "quota_remaining":294
+}

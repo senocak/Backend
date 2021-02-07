@@ -1,0 +1,32 @@
+{% extends "app.twig" %}
+{% block content %}
+    <a class="btn btn-block btn-facebook" href="{{base_url()}}/admin/yazilar/ekle">Yeni Ekle</a>
+    <table class="table table-dark table-striped">
+        <thead><tr><th>Başlık</th><th>Kategori</th><th>İşlemler</th></tr></thead>
+        <tbody>
+            {% for yazi in yazilar %}
+                <tr>
+                    <td>{{yazi.yazi_baslik}}</td>
+                    <td>
+                        {% for kategori in kategoriler %}
+                            {% if kategori.kategori_id == yazi.kategori_id %}
+                                <a class="label label-danger" href="{{base_url()}}/admin/kategori/{{kategori.kategori_url}}/duzenle">{{kategori.kategori_baslik}}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        <a class="label label-primary" href="{{base_url()}}/admin/yazilar/{{yazi.yazi_url}}/duzenle">Güncelle</a>
+                        <a class="label label-danger" href="{{base_url()}}/admin/yazilar/{{yazi.yazi_url}}/sil">Sil</a>
+                        {% if yazi.yazi_onecikan == 1 %}
+                            <a class="label label-default" href="{{base_url()}}/admin/yazilar/{{yazi.yazi_url}}/sabitle">Gizle</a>
+                        {% else %}
+                            <a class="label label-success" href="{{base_url()}}/admin/yazilar/{{yazi.yazi_url}}/sabitle">Sabitle</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr><td>Yazı Yok</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

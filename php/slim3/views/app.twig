@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="Anıl Şenocak">
+        <link rel="shortcut icon" href="favicon.ico">
+        <title>Anıl Şenocak</title>
+        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C400italic%2C700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+        <link href="{{ base_url() }}/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{ base_url() }}/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{{ base_url() }}/css/bootstrap-social.css" rel="stylesheet">
+        <link href="{{ base_url() }}/css/main.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <![endif]-->
+        <style>
+            .dropdown {position: relative;display: inline-block;}
+            .dropdown-content {display: none;position: absolute;min-width: 100px;padding: 12px 16px;z-index: 1; background-color:#c5c5c5;}
+            .dropdown:hover .dropdown-content {display: block;}
+        </style>
+        {% block stylesheet %}{% endblock %}
+    </head>
+    <body>
+        <div id="primary" class="col-sm-12">
+            <div class="content">
+                <header class="header">
+                    <hgroup class="pull-left">
+                        <h1 class="site-title">
+                            <a rel="home" title="Von" href="{{base_url()}}">Anıl Şenocak</a>
+                        </h1>
+                    </hgroup>
+                    <div class="pull-right">
+                        {% if auth.check %}
+                            <div class="dropdown">
+                                <span>{{auth.user.name}}</span>
+                                <div class="dropdown-content">
+                                    <a href="{{ path_for('admin.index') }}">Yazılar</a><br>
+                                    <a href="{{ path_for('admin.kategoriler') }}">Kategoriler</a><br>
+                                    <a href="{{ path_for('admin.yorumlar') }}">Yorumlar</a><br>
+                                    <a href="">Profil</a><br>
+                                    <a href="">Çıkış Yap</a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <a href="{{ path_for('auth') }}">Giriş Yap</a>
+                        {% endif %}
+                    </div>
+                </header>
+                <!--<a href="{{ base_url() }}" class="label label-warning">Anasayfa</a>-->
+                {% block kategoriler %}{% endblock %}
+                {% if flash.getMessage("info") %}
+                    <div class="alert alert-info">{{ flash.getMessage("info") | first }}</div>
+                {% endif %}
+                {% if flash.getMessage("error") %}
+                    <div class="alert alert-danger">{{ flash.getMessage("error") | first }}</div>
+                {% endif %}
+                <hr>
+                {% block content %}Content{% endblock %}
+                <footer class="footer col-xs-12"><p>© Anıl Şenocak {{ "now"|date("m/d/Y") }}. All right reserved.</p></footer>
+            </div>
+        </div>
+        <script src="{{ base_url() }}/js/jquery-1.11.0.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        {% block script %}{% endblock %}
+    </body>
+</html>

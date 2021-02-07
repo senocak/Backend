@@ -1,0 +1,159 @@
+swagger: "2.0"
+info:
+  description: "Lumen/Laravel ile yapılmış full özellikleri olan backend rest api"
+  version: "1.0.0"
+  title: "Lumen Blog"
+  termsOfService: "http://github.com/senocak"
+  contact:
+    email: "anil@bilgimedya.com.tr"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "github.com"
+basePath: "/senocak"
+tags:
+  - name: "user"
+    description: ""
+schemes:
+  - "http"
+paths:
+  /api/kategoriler:
+    get:
+      tags:
+        - "user"
+      responses:
+        "200":
+          description: "OK"
+  /api/kategori/{url}:
+    get:
+      tags:
+        - "user"
+      parameters:
+        - name: "url"
+          in: "path"
+          description: "kategoriye ait url"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: "Kategori bulunamadı"
+  /api/kategori/{url}/yazilar:
+    get:
+      tags:
+        - "user"
+      parameters:
+        - name: "url"
+          in: "path"
+          description: "kategoriye ait url"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: "Kategori bulunamadı"
+  /api/yazilar:
+    get:
+      tags:
+        - "user"
+      responses:
+        "200":
+          description: "OK"
+  /api/yazilar/{url}:
+    get:
+      tags:
+        - "user"
+      parameters:
+        - name: "url"
+          in: "path"
+          description: "yazıya ait url"
+          required: true
+          type: "string"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: "yazı bulunamadı"
+definitions:
+  Kategori:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "char"
+      baslik:
+        type: "string"
+      url:
+        type: "string"
+      resim:
+        type: "string"
+      sira:
+        type: "integer"
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+  Yazi:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        format: "char"
+      baslik:
+        type: "string"
+      url:
+        type: "string"
+      icerik:
+        type: "string"
+      kategori_id:
+        type: "string"
+      etiketler:
+        type: "string"
+      aktif:
+        type: "integer"
+      sira:
+        type: "integer"
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      name:
+        type: "string"
+      email:
+        type: "string"
+      email_verified_at:
+        type: "string"
+      password:
+        type: "string"
+      remember_token:
+        type: "string"
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"
+    xml:
+      name: "User"
+  Yorum:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      email:
+        type: "string"
+      yorum:
+        type: "string"
+      yazi_id:
+        type: "string"
+      onay:
+        type: "integer"
+      created_at:
+        type: "string"
+      updated_at:
+        type: "string"

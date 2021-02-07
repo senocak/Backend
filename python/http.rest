@@ -1,0 +1,21 @@
+GET http://localhost:3456/
+### 
+POST http://localhost:3456/create
+Content-Type: application/json
+
+{
+    "name":"Lorem Ipsum",
+    "email": "lorem@ipsum.com"
+}
+###
+GET http://localhost:3456/read/2
+### 
+PATCH http://localhost:3456/update/2
+Content-Type: application/json
+
+{
+    "name":"Lorem Ipsum2",
+    "email": "lorem@ipsum.com2"
+}
+###
+DELETE  http://localhost:3456/delete/2

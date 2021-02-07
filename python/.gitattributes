@@ -1,0 +1,5 @@
+* text=auto
+*.py linguist-vendored
+
+* linguist-vendored
+*.py linguist-vendored=false

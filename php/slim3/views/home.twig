@@ -1,0 +1,38 @@
+{% extends "app.twig" %}
+{% block content %}
+    {% for yazi in yazilar %}
+        <a href="{{base_url()}}/kategori/{{kategori.kategori_url}}" class="label label-danger">{{kategori.kategori_baslik}}</a> 
+            <section class="post">
+                <header class="entry-header">
+                    <a class="entry-avatar" style="color:black;">{{yazi.created_at | date('d/m/Y')}}</a>
+                    <h2 class="entry-title"><a href="{{base_url()}}/yazi/{{yazi.yazi_url}}">{{yazi.yazi_baslik}}</a></h2>
+                    <p class="entry-meta">
+                        {% for kategori in kategoriler %}
+                            {% if kategori.kategori_id == yazi.kategori_id %}
+                                <a class="label label-danger" href="{{base_url()}}/kategori/{{kategori.kategori_url}}">{{kategori.kategori_baslik}}</a>
+                            {% endif %}
+                        {% endfor %}
+                        | <a class="entry-date">Anıl Şenocak</a> |
+                        {% for item in yazi.yazi_etiketler|split(',') %}
+                            <a class="label label-info">{{item}}</a>
+                        {% endfor %}
+                    </p>
+                </header>
+                <div class="entry-description">
+                    <p>{{ yazi.yazi_icerik|striptags|length > 500 ? yazi.yazi_icerik|striptags|slice(0, 500) ~ '...' : yazi.yazi_icerik|striptags  }}</p>
+                </div>
+            </section>
+    {% endfor %}
+    {% for i in 1..total %}
+        {% if i==currentPage %}
+            <b class="label label-danger">{{i}}</b>
+        {% else %}
+            <a class="label label-warning" href="?page={{i}}">{{i}}</a>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+{% block kategoriler %}
+    {% for kategori in kategoriler %}
+       <a href="{{base_url()}}/kategori/{{kategori.kategori_url}}" class="label label-danger">{{kategori.kategori_baslik}}</a> 
+    {% endfor %}
+{% endblock %}

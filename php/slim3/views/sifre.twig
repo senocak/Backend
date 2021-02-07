@@ -1,0 +1,27 @@
+{% extends "app.twig" %} 
+{% block content %}
+    {% include "sidebar.twig" %}
+    <div class="main col-xs-5">
+        sds
+    </div>
+    <div class="col-xs-5">
+        <form method="POST" action="{{ path_for('auth.postSifreDegistir') }}" autocomplete="off">
+            <div class="form-group {{ errors.password_old_change ? 'has-error' : '' }}">
+                <label for="exampleInputPassword1">Eski Şifre</label>
+                <input type="password" name="password_old_change" class="form-control" id="exampleInputPassword1" placeholder="Eski şifre">
+                {% if errors.password_old_change %}
+                    <span class="help-block">{{ errors.password_old_change | first }}</span>
+                {% endif %}
+            </div>
+            <div class="form-group {{ errors.password_new_change ? 'has-error' : '' }}">
+                <label for="exampleInputPassword1">Yeni Şifre</label>
+                <input type="password" name="password_new_change" class="form-control" id="exampleInputPassword1" placeholder="Yeni Şifre">
+                {% if errors.password_new_change %}
+                    <span class="help-block">{{ errors.password_new_change | first }}</span>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-warning">Güncelle</button>
+            {{csrf.field | raw }}
+        </form>
+    </div>
+{% endblock %}
