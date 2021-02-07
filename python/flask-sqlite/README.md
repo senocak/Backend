@@ -9,6 +9,3 @@
     > pipenv run python manage.py db upgrade
     // development
     > pipenv run python manage.py run
-
-# Frontend
-    > cd frontend
