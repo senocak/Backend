@@ -8,7 +8,7 @@ import jwt
 
 from .exception import BadRequest
 
-key = os.getenv('KEY', 'cosmosboard2')
+key = os.getenv('KEY', 'senocak')
 
 
 class User(db.Model):

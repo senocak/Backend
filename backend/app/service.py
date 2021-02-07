@@ -211,7 +211,7 @@ class YaziServis:
         try:
             uuid.UUID(data["kategori_id"])
         except Exception as e:
-            raise AttributeError("Kategori id\'si valid uuid değil.")
+            raise AttributeError("Kategori id\'si valid uuid değil. Error: " + str(e))
         slug = slugify(data["baslik"])
         yazi = Yazi.query.filter_by(url=slug).first()
         if yazi:
@@ -240,7 +240,7 @@ class YaziServis:
             try:
                 uuid.UUID(data["kategori_id"])
             except Exception as e:
-                raise AttributeError("Kategori id\'si valid uuid değil.")
+                raise AttributeError("Kategori id\'si valid uuid değil. Error: " + str(e))
         yazi = YaziServis.tek_yazi_with_url(yazi_url)
         if 'baslik' in data:
             baslik = data["baslik"].strip()
